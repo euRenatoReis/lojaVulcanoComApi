@@ -1,0 +1,407 @@
+body {
+    background-color: rgb(150, 18, 40);
+    width: 100%;
+    min-width: 100%;
+    display: block;
+}
+
+main {
+
+    width: 100%;
+    min-height: 100%;
+    background-image: url(../imagens/mycollection/png/temadosite.jpg);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+header {
+
+    background-color: rgb(0, 0, 0);
+    color: rgb(185, 33, 33);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    top: 0px;
+    height: 60px;
+    gap: 60px;
+    padding: 6px;
+    justify-content: center;
+    font-family: 'Exo 2', sans-serif;
+
+}
+
+header .barradebusca {
+
+    height: 30px;
+    width: 300px;
+    top: 10px;
+    border-radius: 4px;
+    background-color: rgb(185, 33, 33);
+}
+
+header .usuario {
+    height: 35px;
+    width: 35px;
+    top: 10px;
+    background-image: url(../imagens/mycollection/png/003-do-utilizador.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(185, 33, 33);
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+header .config {
+    height: 35px;
+    width: 35px;
+    top: 10px;
+    background-image: url(../imagens/mycollection/png/002-configuracoes.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(185, 33, 33);
+    border-radius: 30px;
+    cursor: pointer;
+
+}
+
+.slider{
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.carrossel.destaq1.aberto{
+
+    background-color: chartreuse;
+    height: 500px;
+    width: 80%;
+}
+
+.carrossel.destaq2.aberto{
+
+    background-color: orangered;
+    height: 500px;
+}
+
+.carrossel.destaq3.aberto{
+
+    background-color: aqua;
+    height: 500px;
+}
+
+.carrossel.destaq4.aberto{
+
+    background-color: yellow;
+    height: 500px;
+}
+
+
+.carrossel.destaq1.oculto,
+.carrossel.destaq2.oculto,
+.carrossel.destaq3.oculto,
+.carrossel.destaq4.oculto{ display: none;}
+
+.setaavancar, .setavoltar{ width: 40px; height: 80px;}
+
+.setavoltar{
+   background-image: url(../imagens/mycollection/png/arrow-left-long-solid.svg);
+   background-repeat: no-repeat;
+   background-position: center;
+   cursor: pointer;
+} 
+.setaavancar{
+    background-image: url(../imagens/mycollection/png/arrow-right-long-solid.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.categorias {
+
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 120px;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    align-self: center;
+
+}
+
+.categorias .botcatg {
+
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.ofertas {
+
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 20px;
+    align-items: center;
+    align-self: center;
+}
+
+.ofertas 
+.oferta1,
+.oferta2,
+.oferta3,
+.oferta4,
+.oferta5,
+.oferta6,
+.oferta7
+ {
+
+    width: 150px;
+    height: 150px;
+}
+
+.oferta1,
+.oferta2,
+.oferta3,
+.oferta4,
+.oferta5,
+.oferta6,
+.oferta7 {
+    background-color: rgb(185, 33, 33);
+}
+
+
+.produtos {
+
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 20px;
+    align-items: center;
+    align-self: center;
+
+}
+
+.produtos
+.produto1,
+.produto2,
+.produto3,
+.produto4,
+.produto5,
+.produto6,
+.produto7
+ {
+
+    width: 150px;
+    height: 150px;
+
+}
+
+.produto1,
+.produto2,
+.produto3,
+.produto4,
+.produto5,
+.produto6,
+.produto7
+ {
+    background-color: rgb(185, 33, 33);
+}
+
+footer {
+
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    bottom: 0px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+footer div, a {
+
+    width: 40px;
+    height: 40px;
+    display: flex;
+}
+
+footer .github {
+    background-image: url(../imagens/mycollection/png/015-github.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(185, 33, 33);
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+footer .linkedin {
+    background-image: url(../imagens/mycollection/png/linkedin.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(185, 33, 33);
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.github:hover,
+.linkedin:hover {
+    background-color: rgb(253, 25, 25);
+}
+
+.tecnologia {
+    background-image: url(../imagens/mycollection/png/computador-portatil.png);
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.modamasculina {
+    background-image: url(../imagens/mycollection/png/004-roupas-masculinas.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.modafeminina {
+    background-image: url(../imagens/mycollection/png/005-vestir.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.esportes {
+    background-image: url(../imagens/mycollection/png/football.png);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: center;
+    cursor: pointer;
+}
+
+.calcadosmasculinos {
+    background-image: url(../imagens/mycollection/png/007-sapatos.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.calcadosfemininos {
+    background-image: url(../imagens/mycollection/png/008-salto-alto-feminino.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.pets {
+    background-image: url(../imagens/mycollection/png/pawprint.png);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: center;
+    cursor: pointer;
+}
+
+.cosmeticos {
+    background-image: url(../imagens/mycollection/png/010-cosmetico.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.lazer {
+    background-image: url(../imagens/mycollection/png/011-cadeira-de-praia.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.eletrodomesticos {
+    background-image: url(../imagens/mycollection/png/012-eletrodomesticos.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.moveis {
+    background-image: url(../imagens/mycollection/png/013-armario-de-cozinha.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.livroserevistas {
+    background-image: url(../imagens/mycollection/png/014-revistas.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+
+.mostrador.oculto {
+
+    display: none;
+
+}
+
+.mostrador {
+
+    position: absolute;
+    display: flex;
+    width: 500px;
+    height: 400px;
+    top: 200px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-self: center;
+    font-family: 'Economica', sans-serif;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+}
+
+.mostrador .fotodoproduto {
+
+    background-color: rgb(145, 145, 145);
+    height: 400px;
+    width: 250px;
+    justify-content: center;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+.mostrador .informacoes {
+
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    height: 400px;
+    width: 250px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
