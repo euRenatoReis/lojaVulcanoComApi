@@ -1,0 +1,14 @@
+
+const info = {
+
+   produto: '',
+
+   preco: '',
+
+   
+
+
+
+
+
+}

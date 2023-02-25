@@ -79,7 +79,7 @@ header .config {
 
 .carrossel.destaq1.aberto {
 
-    background-color: chartreuse;
+    background-color: rgb(219, 117, 0);
     height: 500px;
     width: 80%;
     display: flex;
@@ -88,33 +88,36 @@ header .config {
 
 .carrossel.destaq2.aberto {
 
-    background-color: orangered;
+    background-color: rgb(255, 50, 50);
     height: 500px;
-    justify-content: center;
+    width: 80%;
     display: flex;
+    justify-content: center;
 }
 
 .carrossel.destaq3.aberto {
 
-    background-color: aqua;
+    background-color: rgb(252, 221, 47);
     height: 500px;
-    justify-content: center;
+    width: 80%;
     display: flex;
+    justify-content: center;
 }
 
 .carrossel.destaq4.aberto {
-
-    background-color: yellow;
+    
+    background-color: rgb(214, 2, 119);
     height: 500px;
-    justify-content: center;
+    width: 80%;
     display: flex;
+    justify-content: center;
 }
 
 
-.carrossel.destaq1.oculto,
-.carrossel.destaq2.oculto,
-.carrossel.destaq3.oculto,
-.carrossel.destaq4.oculto {
+.carrossel.destaq1,
+.carrossel.destaq2,
+.carrossel.destaq3,
+.carrossel.destaq4 {
     display: none;
 }
 
@@ -482,7 +485,7 @@ footer .linkedin {
 
     .carrossel.destaq1.aberto {
 
-        background-color: chartreuse;
+     
         height: 200px;
         width: 80%;
         display: flex;
@@ -491,7 +494,7 @@ footer .linkedin {
 
     .carrossel.destaq2.aberto {
 
-        background-color: orangered;
+      
         height: 200px;
         justify-content: center;
         display: flex;
@@ -499,7 +502,7 @@ footer .linkedin {
 
     .carrossel.destaq3.aberto {
 
-        background-color: aqua;
+      
         height: 200px;
         justify-content: center;
         display: flex;
@@ -507,7 +510,7 @@ footer .linkedin {
 
     .carrossel.destaq4.aberto {
 
-        background-color: yellow;
+        
         height: 200px;
         justify-content: center;
         display: flex;
@@ -664,7 +667,7 @@ footer .linkedin {
 
     .carrossel.destaq1.aberto {
 
-        background-color: chartreuse;
+        
         height: 200px;
         width: 80%;
         display: flex;
@@ -673,7 +676,7 @@ footer .linkedin {
 
     .carrossel.destaq2.aberto {
 
-        background-color: orangered;
+    
         height: 200px;
         justify-content: center;
         display: flex;
@@ -681,7 +684,7 @@ footer .linkedin {
 
     .carrossel.destaq3.aberto {
 
-        background-color: aqua;
+     
         height: 200px;
         justify-content: center;
         display: flex;
@@ -689,7 +692,6 @@ footer .linkedin {
 
     .carrossel.destaq4.aberto {
 
-        background-color: yellow;
         height: 200px;
         justify-content: center;
         display: flex;
