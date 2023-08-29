@@ -1,0 +1,175 @@
+header {
+
+    background-color: rgb(0, 0, 0);
+    color: rgb(185, 33, 33);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    top: 0px;
+    height: 60px;
+    gap: 10px;
+    padding: 6px;
+    justify-content: center;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 10px;
+}
+
+header .barradebusca {
+
+    height: 35px;
+    width: 200px;
+    top: 10px;
+    border-radius: 4px;
+    background-color: rgb(185, 33, 33);
+}
+
+header .usuario {
+    height: 35px;
+    width: 35px;
+    top: 10px;
+    background-image: url(../imagens/mycollection/png/003-do-utilizador.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(185, 33, 33);
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+header .config {
+    height: 35px;
+    width: 35px;
+    top: 10px;
+    background-image: url(../imagens/mycollection/png/002-configuracoes.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(185, 33, 33);
+    border-radius: 30px;
+    cursor: pointer;
+
+}
+
+
+.slider {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.carrossel.destaq1.aberto {
+
+
+    height: 200px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.carrossel.destaq2.aberto {
+
+
+    height: 200px;
+    justify-content: center;
+    display: flex;
+}
+
+.carrossel.destaq3.aberto {
+
+
+    height: 200px;
+    justify-content: center;
+    display: flex;
+}
+
+.carrossel.destaq4.aberto {
+
+    height: 200px;
+    justify-content: center;
+    display: flex;
+}
+
+.categorias {
+
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 120px;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    align-self: center;
+
+}
+
+.categorias .botcatg {
+
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.ofertas {
+
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-between;
+    padding: 25px;
+    gap: 20px;
+    align-items: center;
+    align-self: center;
+}
+
+.ofertas .oferta1,
+.oferta2,
+.oferta3,
+.oferta4,
+.oferta5 {
+
+    width: 130px;
+    height: 130px;
+}
+
+.oferta6,
+.oferta7 {
+    display: none;
+}
+
+
+.produtos {
+
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-between;
+    padding: 25px;
+    gap: 20px;
+    align-items: center;
+    align-self: center;
+
+}
+
+.produtos .produto1,
+.produto2,
+.produto3,
+.produto4,
+.produto5 {
+
+    width: 130px;
+    height: 130px;
+
+}
+
+.produto6,
+.produto7 {
+    display: none;
+}

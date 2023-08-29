@@ -9,6 +9,17 @@ const carrossel = document.querySelectorAll('.carrossel');
 const setaavancar = document.querySelector('.setaavancar');
 const setavoltar = document.querySelector('.setavoltar');
 
+
+// botoes categoria
+
+const botcatg = document.querySelectorAll('.botcatg');
+
+// campos da pagina 
+
+const campoOfertas = document.querySelector('.ofertas');
+const campoProdutos = document.querySelector('.produtos');
+
+
 let indiceAtual = 0;
 
 setaavancar.addEventListener('click', () => {
@@ -28,45 +39,79 @@ setavoltar.addEventListener('click', () => {
 
 // api
 
-barradebusca.addEventListener('keyup', async (e)=>{
-  const pegarValorEvento = e.target.value; 
+barradebusca.addEventListener('keyup', async (e) => {
+  const pegarValorEvento = e.target.value;
   const pressionado = e.which || e.keycode;
   const chave = pressionado === 13;
-  
+
   // chamar a função pegaValorDaApi sem os parênteses
   await pegaValorDaApi();
 })
 
-async function pegaValorDaApi(){
+async function pegaValorDaApi() {
   try {
-    const searchQuery = barradebusca.value;
-    const response = await fetch(`https://fakestoreapi.com/products?title=${searchQuery}`);
+
+    const response = await fetch(`https://fakestoreapi.com/products`);
     const products = await response.json();
 
-    mostrarResultados(products);
+    return await products
+
   } catch (error) {
     console.log('Ocorreu um erro ao buscar produtos', error);
   }
 }
 
-function mostrarResultados(products) {
-  if (products.length === 0) {
-    mostrador.classList.add('oculto');
-    return;
-  }
+botcatg.forEach((botao) => {
 
-  const searchQuery = barradebusca.value;
-  const procura = products.find(function(products){
-    return products.title.toLowerCase() === searchQuery.toLowerCase();
-  });
 
-  if (!procura) {
-    mostrador.classList.add('oculto');
-    return;
-  }
+  botao.addEventListener('click', async () => {
 
-  areaDoPreco.innerHTML = procura.price;
-  nomeproduto.innerHTML = procura.title;
+    campoOfertas.innerHTML = ``
+    campoProdutos.innerHTML = ``
 
-  mostrador.classList.remove('oculto');
-}
+    const resposta = await pegaValorDaApi()
+    const categoriaDobotao = botao.id
+
+    const entradasRespostas = Object.entries(resposta)
+
+    console.log('resposta é:', resposta, 'entradasResposta: ', entradasRespostas, 'um exemplo de entrada:', entradasRespostas[1][1].category)
+
+    entradasRespostas.forEach((objProduto) => {
+
+      if (objProduto[1].category === categoriaDobotao) {
+
+        if (objProduto[1].price >= 50) {
+
+          campoOfertas.innerHTML += `<div class="oferta">]
+    
+         <img class="imagem-do-produto" alt="imagem do produto ${objProduto[1].title}">
+    
+         <div class="descricao-oferta">
+            <h3>${objProduto[1].title}</h3>
+            <p>${objProduto[1].price}</p>
+         </div>
+         </div>`
+
+        }else{
+ 
+          campoProdutos.innerHTML += `<div class="produto">]
+    
+          <img class="imagem-do-produto" alt="imagem do produto ${objProduto[1].title}">
+     
+          <div class="descricao-produto">
+             <h3>${objProduto[1].title}</h3>
+             <p>${objProduto[1].price}</p>
+          </div>
+          </div>`
+        }
+        
+      } else {
+
+        return
+      }
+
+    })
+
+  })
+
+})
