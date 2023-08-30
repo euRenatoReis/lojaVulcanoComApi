@@ -61,6 +61,44 @@ async function pegaValorDaApi() {
   }
 }
 
+const pegaTodosProdutos = await pegaValorDaApi()
+
+const entradasTodosProdutos = Object.entries(pegaTodosProdutos)
+
+entradasTodosProdutos.forEach((entrada) => {
+
+  if (entrada[1].price >= 50) {
+
+     campoProdutos.innerHTML += `<div class="produto">
+    
+     <img class="imagem-do-produto" src=${entrada[1].image} alt="imagem do produto ${entrada[1].title}">
+
+     <div class="descricao-produto">
+        <h3>${entrada[1].title}</h3>
+        <p>${entrada[1].price}</p>
+     </div>
+     </div>`
+
+  } else {
+
+    campoOfertas.innerHTML += `<div class="oferta">]
+    
+    <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entrada[1].title}">
+
+    <div class="descricao-oferta">
+       <h3>${entrada[1].title}</h3>
+       <p>${entrada[1].price}</p>
+    </div>
+    </div>`
+  }
+
+
+})
+
+
+
+
+
 botcatg.forEach((botao) => {
 
 
@@ -80,11 +118,11 @@ botcatg.forEach((botao) => {
 
       if (objProduto[1].category === categoriaDobotao) {
 
-        if (objProduto[1].price >= 50) {
+        if (objProduto[1].price <= 50) {
 
           campoOfertas.innerHTML += `<div class="oferta">]
     
-         <img class="imagem-do-produto" alt="imagem do produto ${objProduto[1].title}">
+         <img class="imagem-do-produto" src=${objProduto[1].image}  alt="imagem do produto ${objProduto[1].title}">
     
          <div class="descricao-oferta">
             <h3>${objProduto[1].title}</h3>
@@ -92,11 +130,11 @@ botcatg.forEach((botao) => {
          </div>
          </div>`
 
-        }else{
- 
-          campoProdutos.innerHTML += `<div class="produto">]
+        } else {
+
+          campoProdutos.innerHTML += `<div class="produto">
     
-          <img class="imagem-do-produto" alt="imagem do produto ${objProduto[1].title}">
+          <img class="imagem-do-produto" src=${objProduto[1].image} alt="imagem do produto ${objProduto[1].title}">
      
           <div class="descricao-produto">
              <h3>${objProduto[1].title}</h3>
@@ -104,7 +142,7 @@ botcatg.forEach((botao) => {
           </div>
           </div>`
         }
-        
+
       } else {
 
         return
