@@ -1,5 +1,5 @@
 
-
+import { pegaValorDaApi } from "./getData.js"
 
 
 async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) {
@@ -31,14 +31,23 @@ async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) 
 }
 
 
-async function renderizaCategoria(campoOfertas, campoProdutos){
-
+async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
 
     campoOfertas.innerHTML = ``
     campoProdutos.innerHTML = ``
 
     const resposta = await pegaValorDaApi()
-    const categoriaDobotao = botao.id
+    var categoriaDobotao = botao.id
+
+    if (categoriaDobotao === "mens-clothing") {
+        categoriaDobotao = "men's clothing"
+
+    } else if (categoriaDobotao === "womens-clothing") {
+        categoriaDobotao = "women's clothing"
+        
+    }
+
+
 
     const entradasRespostas = Object.entries(resposta);
 

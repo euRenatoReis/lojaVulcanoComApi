@@ -1,5 +1,6 @@
+const carrossel = document.querySelectorAll('.carrossel');
+var indiceAtual = 0;
 
-const indiceAtual = 0;
 
 function avancarSlide() {
 

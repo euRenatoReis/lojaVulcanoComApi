@@ -1,8 +1,9 @@
 :root {
 
  
-    --corDaOferta: rgb(199, 107, 107);
-    --corDaProduto: rgb(255, 255, 255);
+    --corDaOferta: white;
+    --corDaProduto: white;
+    --corDoTituloProduto: rgb(255, 255, 255);
 
     --fontFamilyUniversal: 'Exo 2', sans-serif;
 }
@@ -53,6 +54,7 @@ header {
     gap: 60px;
     padding: 6px;
     justify-content: center;
+    align-items: center;
     font-family: var(--fontFamilyUniversal);
 
 }
@@ -110,7 +112,6 @@ header .config {
     justify-content: center;
     color: var(--corDaOferta);
     font-family: var(--fontFamilyUniversal);
-    animation-name: animaSlidesAvancar;
     animation-duration: 1s ease-in-out;
 }
 
@@ -125,7 +126,6 @@ header .config {
     justify-content: center;
     color: var(--corDaOferta);
     font-family: var(--fontFamilyUniversal);
-    animation-name: animaSlidesAvancar;
     animation-duration: 1s;
 }
 
@@ -140,7 +140,6 @@ header .config {
     justify-content: center;
     color: var(--corDaOferta);
     font-family: var(--fontFamilyUniversal);
-    animation-name: animaSlidesAvancar;
     animation-duration: 1s;
 }
 
@@ -155,7 +154,6 @@ header .config {
     justify-content: center;
     color: var(--corDaOferta);
     font-family: var(--fontFamilyUniversal);
-    animation-name: animaSlidesAvancar;
     animation-duration: 1s;
 }
 
@@ -277,8 +275,9 @@ header .config {
     font-size: 14px;
 }
 
-.descricao-produto p {
-    font-size: 12px;
+.descricao-produto h3 {
+    
+   color: var(--corDoTituloProduto);
 }
 
 .preco-oferta {
@@ -286,8 +285,14 @@ header .config {
     color: var(--corDaOferta);
 }
 
+.descricao-oferta h3{
+
+    color: var(--corDoTituloProduto);
+}
+
 .preco-produto {
     color: var(--corDaProduto);
+    font-size: 12px;
 }
 
 footer {
