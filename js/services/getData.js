@@ -16,7 +16,7 @@ async function pegaValorDaApi() {
 async function pesquisaValorDaApi(conteudoPesquisa){
 
     try{
-        const response = await fetch(`https://fakestoreapi.com/products/${conteudoPesquisa}`);
+        const response = await fetch(`https://fakestoreapi.com/products?title=${conteudoPesquisa}`);
         const products = await response.json();
 
         return await products

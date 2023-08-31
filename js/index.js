@@ -2,12 +2,10 @@
 import { pegaValorDaApi, pesquisaValorDaApi } from "./services/getData.js";
 import { renderizaCategoria, renderizarProdutosIniciais } from "./services/renderiza.js";
 import { avancarSlide, retornarSlide, trocarSlide } from "./carrossel.js";
+import { postMeusProdutos } from "./services/postItem.js";
 
 const barradebusca = document.querySelector('.barradebusca');
 const mostrador = document.querySelector('.mostrador');
-const nomeproduto = document.querySelector('.nomeproduto');
-const areaDoPreco = document.querySelector('.preco');
-const imagemproduto = document.querySelector('.fotodoproduto');
 
 const setaavancar = document.querySelector('.setaavancar');
 const setavoltar = document.querySelector('.setavoltar');
@@ -31,12 +29,43 @@ setInterval(trocarSlide, 10000);
 
 barradebusca.addEventListener('keyup', async (e) => {
   const pegarValorEvento = e.target.value;
-  const pressionado = e.which || e.keycode;
+  const pressionado = e.which || e.keyCode;
   const chave = pressionado === 13;
 
-  const conteudoPesquisa = barradebusca.value
+  mostrador.innerHTML = ``
+  let conteudoPesquisa = barradebusca.value
+  conteudoPesquisa = conteudoPesquisa.charAt(0).toUpperCase() + conteudoPesquisa.slice(1)
+  let valorDaPesquisa = await pesquisaValorDaApi(conteudoPesquisa);
+  let EntradasObj = Object.entries(valorDaPesquisa)
 
-  await pesquisaValorDaApi(conteudoPesquisa);
+  EntradasObj.forEach((itemPesquisado) => {
+
+    if (itemPesquisado[1].title.includes(conteudoPesquisa)) {
+
+      console.log('valor de entradasObj é:', itemPesquisado)
+
+      mostrador.classList.remove('oculto');
+
+      mostrador.innerHTML += ` <div class="card-produto">
+      
+      <picture class="fotodoproduto">
+         <source srcset=${itemPesquisado[1].image} media="(min-width: 250px)>
+         <img src=${itemPesquisado[1].image} alt="imagem do produto ${itemPesquisado[1].title}">
+      </picture>
+
+        <div class="informacoes">
+
+         <div class="nomeproduto">${itemPesquisado[1].title}</div>
+         <div class="preco">${itemPesquisado[1].title}</div>
+
+        </div>
+      </div>
+      `
+    } else {
+      return
+    }
+
+  })
 })
 
 const pegaTodosProdutos = await pegaValorDaApi();
@@ -49,3 +78,5 @@ botcatg.forEach((botao) => {
   botao.addEventListener('click', async () => await renderizaCategoria(campoOfertas, campoProdutos, botao))
 
 })
+
+postMeusProdutos()

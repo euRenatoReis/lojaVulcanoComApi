@@ -7,8 +7,10 @@ async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) 
     if (entrada[1].price >= 50) {
 
         campoProdutos.innerHTML += `<div class="produto">
-    
-     <img class="imagem-do-produto" src=${entrada[1].image} alt="imagem do produto ${entrada[1].title}">
+     <picture>
+       <source  srcset=${entrada[1].image} media="(min-width: 250px)" />
+       <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entrada[1].title}">
+     </picture>
 
      <div class="descricao-produto">
         <h3>${entrada[1].title}</h3>
@@ -19,9 +21,10 @@ async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) 
     } else {
 
         campoOfertas.innerHTML += `<div class="oferta">
-    
-    <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entrada[1].title}">
-
+    <picture>
+      <source  srcset=${entrada[1].image} media="(min-width: 250px)" />
+      <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entrada[1].title}">
+    </picture>
     <div class="descricao-oferta">
        <h3>${entrada[1].title}</h3>
        <p class="preco-oferta">$${entrada[1].price}</p>
@@ -44,7 +47,7 @@ async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
 
     } else if (categoriaDobotao === "womens-clothing") {
         categoriaDobotao = "women's clothing"
-        
+
     }
 
 
@@ -59,7 +62,10 @@ async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
 
                 campoOfertas.innerHTML += `<div class="oferta">
     
-         <img class="imagem-do-produto" src=${objProduto[1].image}  alt="imagem do produto ${objProduto[1].title}">
+         <picture>
+            <source  srcset=${entrada[1].image} media="(min-width: 250px)" />
+            <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entrada[1].title}">
+         </picture>
     
          <div class="descricao-oferta">
             <h3>${objProduto[1].title}</h3>
@@ -71,7 +77,10 @@ async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
 
                 campoProdutos.innerHTML += `<div class="produto">
     
-          <img class="imagem-do-produto" src=${objProduto[1].image} alt="imagem do produto ${objProduto[1].title}">
+          <picture>
+            <source  srcset=${entrada[1].image} media="(min-width: 250px)" />
+            <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entrada[1].title}">
+          </picture>
      
           <div class="descricao-produto">
              <h3>${objProduto[1].title}</h3>

@@ -1,10 +1,12 @@
 :root {
 
- 
+
     --corDaOferta: white;
     --corDaProduto: white;
     --corDoTituloProduto: rgb(255, 255, 255);
 
+    --cursorPage: pointer;
+    --cursorObjects: grab;
     --fontFamilyUniversal: 'Exo 2', sans-serif;
 }
 
@@ -207,6 +209,7 @@ header .config {
     height: 80px;
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
+    cursor: var(--cursorPage);
 }
 
 
@@ -258,6 +261,7 @@ header .config {
     display: flex;
     width: 100%;
     height: 70%;
+
 }
 
 .descricao-produto,
@@ -276,8 +280,8 @@ header .config {
 }
 
 .descricao-produto h3 {
-    
-   color: var(--corDoTituloProduto);
+
+    color: var(--corDoTituloProduto);
 }
 
 .preco-oferta {
@@ -285,7 +289,7 @@ header .config {
     color: var(--corDaOferta);
 }
 
-.descricao-oferta h3{
+.descricao-oferta h3 {
 
     color: var(--corDoTituloProduto);
 }
@@ -351,22 +355,30 @@ footer .linkedin {
 
     position: absolute;
     display: flex;
-    width: 500px;
-    height: 400px;
-    top: 200px;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    align-self: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
     font-family: 'Economica', sans-serif;
-    background-color: cornflowerblue;
-    border-radius: 10px;
+    background-color: rgb(145, 145, 145, 0.5);
+}
+
+.mostrador .card-produto {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 10px;    
+    align-self: center;
+    justify-self: center;
 }
 
 .mostrador .fotodoproduto {
 
     background-color: rgb(145, 145, 145);
-    height: 400px;
-    width: 250px;
+    height: 40%;
+    width: 100%;
     justify-content: center;
     padding: 10px;
     border-top-left-radius: 10px;
@@ -382,8 +394,8 @@ footer .linkedin {
     flex-wrap: wrap;
     justify-content: center;
     padding: 10px;
-    height: 400px;
-    width: 250px;
+    height: 60%;
+    width: 100%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 
