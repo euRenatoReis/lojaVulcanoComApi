@@ -25,8 +25,7 @@ async function pesquisaValorDaApi(conteudoPesquisa){
 
         console.log('Ocorreu um erro ao pesquisar data', error)
     }
-
 }
 
 
-export { pegaValorDaApi, pesquisaValorDaApi }
+export { pegaValorDaApi, pesquisaValorDaApi}

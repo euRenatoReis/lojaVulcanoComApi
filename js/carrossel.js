@@ -7,6 +7,7 @@ function avancarSlide() {
     carrossel[indiceAtual].classList.remove('aberto');
     indiceAtual = (indiceAtual + 1) % carrossel.length;
     carrossel[indiceAtual].classList.add('aberto');
+
 }
 
 function retornarSlide() {
@@ -21,6 +22,8 @@ function trocarSlide() {
     carrossel[indiceAtual].classList.remove('aberto');
     indiceAtual = (indiceAtual + 1) % carrossel.length;
     carrossel[indiceAtual].classList.add('aberto');
+
+    
 
 }
 

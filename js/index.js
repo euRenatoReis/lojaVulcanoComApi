@@ -1,6 +1,6 @@
 
 import { pegaValorDaApi, pesquisaValorDaApi } from "./services/getData.js";
-import { renderizaCategoria, renderizarProdutosIniciais } from "./services/renderiza.js";
+import { renderizaCardProduto, renderizaCategoria, renderizarProdutosIniciais } from "./services/renderiza.js";
 import { avancarSlide, retornarSlide, trocarSlide } from "./carrossel.js";
 import { postMeusProdutos } from "./services/postItem.js";
 
@@ -20,6 +20,7 @@ const campoOfertas = document.querySelector('.ofertas');
 const campoProdutos = document.querySelector('.produtos');
 
 
+
 setaavancar.addEventListener('click', avancarSlide);
 
 setavoltar.addEventListener('click', retornarSlide);
@@ -32,40 +33,17 @@ barradebusca.addEventListener('keyup', async (e) => {
   const pressionado = e.which || e.keyCode;
   const chave = pressionado === 13;
 
-  mostrador.innerHTML = ``
-  let conteudoPesquisa = barradebusca.value
-  conteudoPesquisa = conteudoPesquisa.charAt(0).toUpperCase() + conteudoPesquisa.slice(1)
-  let valorDaPesquisa = await pesquisaValorDaApi(conteudoPesquisa);
-  let EntradasObj = Object.entries(valorDaPesquisa)
+  if (chave && pegarValorEvento) {
 
-  EntradasObj.forEach((itemPesquisado) => {
+    mostrador.innerHTML = ``
+    let conteudoPesquisa = barradebusca.value
+    conteudoPesquisa = conteudoPesquisa.charAt(0).toUpperCase() + conteudoPesquisa.slice(1)
+    let valorDaPesquisa = await pesquisaValorDaApi(conteudoPesquisa);
+    let EntradasObj = Object.entries(valorDaPesquisa)
 
-    if (itemPesquisado[1].title.includes(conteudoPesquisa)) {
+    EntradasObj.forEach((itemPesquisado) => renderizaCardProduto(itemPesquisado, conteudoPesquisa, mostrador))
+  }
 
-      console.log('valor de entradasObj é:', itemPesquisado)
-
-      mostrador.classList.remove('oculto');
-
-      mostrador.innerHTML += ` <div class="card-produto">
-      
-      <picture class="fotodoproduto">
-         <source srcset=${itemPesquisado[1].image} media="(min-width: 250px)>
-         <img src=${itemPesquisado[1].image} alt="imagem do produto ${itemPesquisado[1].title}">
-      </picture>
-
-        <div class="informacoes">
-
-         <div class="nomeproduto">${itemPesquisado[1].title}</div>
-         <div class="preco">${itemPesquisado[1].title}</div>
-
-        </div>
-      </div>
-      `
-    } else {
-      return
-    }
-
-  })
 })
 
 const pegaTodosProdutos = await pegaValorDaApi();
@@ -79,4 +57,6 @@ botcatg.forEach((botao) => {
 
 })
 
-postMeusProdutos()
+
+
+// fazer titulos grandes serem meio ocultos e no hover continua-los

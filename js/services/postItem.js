@@ -1,3 +1,5 @@
+import { pesquisaValorDaApi } from "./getData.js";
+
 
 async function postMeusProdutos() {
 

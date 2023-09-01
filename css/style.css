@@ -1,8 +1,9 @@
 :root {
 
-
-    --corDaOferta: white;
-    --corDaProduto: white;
+    --destaquesDaPage: rgb(150, 18, 40);
+    --corDaOferta: rgb(255, 219, 61);
+    --corDaProduto: rgb(255, 219, 61);
+    --corSecundariasOfertaProduto : rgb(255, 164, 61);
     --corDoTituloProduto: rgb(255, 255, 255);
 
     --cursorPage: pointer;
@@ -22,11 +23,25 @@
     }
 }
 
+@keyframes cintilar {
+    
+    from{
+
+        color: var(--corDaOferta);
+    }
+
+    to{
+
+        color: green;
+    }
+}
+
 body {
-    background-color: rgb(150, 18, 40);
+    background-color: var(--destaquesDaPage);
     width: 100%;
     min-width: 100%;
     display: block;
+    cursor: var(--cursorPage);
     font-family: 'Exo 2' sans-serif;
 }
 
@@ -68,32 +83,44 @@ header .barradebusca {
     top: 10px;
     border-radius: 4px;
     background-color: rgb(185, 33, 33);
+    color: var(--corDoTituloProduto);
+    padding-left: 10px;
+}
+
+header .btCarrinho{
+
+    height: 35px;
+    width: 35px;
+    top: 10px;
+    background-color: rgb(185, 33, 33);
+    border-radius: 30px;
+    cursor: var(--cursorObjects);
 }
 
 header .usuario {
     height: 35px;
     width: 35px;
     top: 10px;
-    background-image: url(../imagens/mycollection/png/003-do-utilizador.png);
-    background-repeat: no-repeat;
-    background-position: center;
     background-color: rgb(185, 33, 33);
     border-radius: 30px;
-    cursor: pointer;
+    cursor: var(--cursorObjects);
 }
 
 header .config {
     height: 35px;
     width: 35px;
     top: 10px;
-    background-image: url(../imagens/mycollection/png/002-configuracoes.png);
-    background-repeat: no-repeat;
-    background-position: center;
     background-color: rgb(185, 33, 33);
     border-radius: 30px;
-    cursor: pointer;
+    cursor: var(--cursorObjects);
 
 }
+
+.config i:hover, .usuario i:hover, .btCarrinho i:hover{
+
+    color: var(--corSecundariasOfertaProduto);
+}
+
 
 .slider {
 
@@ -103,9 +130,11 @@ header .config {
 }
 
 
-.carrossel.destaq1.aberto {
+.carrossel.destaq1.aberto,
+.carrossel.destaq2.aberto,
+.carrossel.destaq3.aberto,
+.carrossel.destaq4.aberto {
 
-    background-image: url(../imagens/mycollection/png/tecnologia_resized.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
@@ -114,49 +143,30 @@ header .config {
     justify-content: center;
     color: var(--corDaOferta);
     font-family: var(--fontFamilyUniversal);
+    animation-name: animaSlidesAvancar;
     animation-duration: 1s ease-in-out;
+    transition: ease-in-out 0.3s;
+}
+
+
+.carrossel.destaq1.aberto {
+
+    background-image: url(../imagens/mycollection/png/tecnologia_resized.jpg);
 }
 
 .carrossel.destaq2.aberto {
 
     background-image: url(../imagens/mycollection/png/moda\ masculina_resized.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 500px;
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    color: var(--corDaOferta);
-    font-family: var(--fontFamilyUniversal);
-    animation-duration: 1s;
 }
 
 .carrossel.destaq3.aberto {
 
     background-image: url(../imagens/mycollection/png/moda\ feminina_resized_resized.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 500px;
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    color: var(--corDaOferta);
-    font-family: var(--fontFamilyUniversal);
-    animation-duration: 1s;
 }
 
 .carrossel.destaq4.aberto {
 
     background-image: url(../imagens/mycollection/png/joalheria_resized.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 500px;
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    color: var(--corDaOferta);
-    font-family: var(--fontFamilyUniversal);
-    animation-duration: 1s;
 }
 
 
@@ -268,6 +278,7 @@ header .config {
 .descricao-oferta {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: 30%;
     padding-top: 10px;
@@ -286,7 +297,13 @@ header .config {
 
 .preco-oferta {
 
+    display: flex;
+    align-self: flex-start;
+    justify-self: flex-end;
     color: var(--corDaOferta);
+    font-weight: bold;
+    animation-name: cintilar;
+    animation-duration: 0.4s;
 }
 
 .descricao-oferta h3 {
@@ -297,6 +314,9 @@ header .config {
 .preco-produto {
     color: var(--corDaProduto);
     font-size: 12px;
+    font-weight: bold;
+    animation-name: cintilar;
+    animation-duration: 0.4s;
 }
 
 footer {
@@ -345,39 +365,42 @@ footer .linkedin {
 
 
 
-.mostrador.oculto {
+.mostrador {
 
     display: none;
 
 }
 
-.mostrador {
+.mostrador.open {
 
     position: absolute;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     font-family: 'Economica', sans-serif;
     background-color: rgb(145, 145, 145, 0.5);
 }
 
-.mostrador .card-produto {
+.mostrador.open .card-produto {
 
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    border-radius: 10px;    
+    height: 600px;
+    width: 400px;
+    border-radius: 10px;
     align-self: center;
     justify-self: center;
+
 }
 
-.mostrador .fotodoproduto {
+.mostrador.open .fotodoproduto {
 
     background-color: rgb(145, 145, 145);
-    height: 40%;
+    height: 50%;
     width: 100%;
     justify-content: center;
     padding: 10px;
@@ -386,7 +409,8 @@ footer .linkedin {
 
 }
 
-.mostrador .informacoes {
+
+.mostrador.open .informacoes {
 
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -394,9 +418,26 @@ footer .linkedin {
     flex-wrap: wrap;
     justify-content: center;
     padding: 10px;
-    height: 60%;
+    height: 50%;
     width: 100%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 
+}
+
+.mostrador.open .bt-fechar {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.card-resto-nome{
+
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--destaquesDaPage);
 }
