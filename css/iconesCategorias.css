@@ -1,0 +1,23 @@
+:root {
+
+    --corIconeRoupaMasculina: rgb(156, 156, 235);
+    --corIconeRoupaFeminina: rgb(204, 156, 235);
+    --corIconeJewelery: rgb(236, 156, 216);
+    --corIconeEletronics: rgb(156, 236, 212);
+}
+
+#mens-clothing {
+    color: var(--corIconeRoupaMasculina);
+}
+
+#womens-clothing {
+    color: var(--corIconeRoupaFeminina);
+}
+
+#jewelery {
+    color: var(--corIconeJewelery);
+}
+
+#electronics {
+    color: var(--corIconeEletronics);
+}

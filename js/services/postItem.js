@@ -25,7 +25,7 @@ async function postMeusProdutos() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(bolaDeFutebol)
+        body:JSON.stringify(bolaDeFutebol)
 
     }).then(response => response.json())
         .then(data => {

@@ -1,6 +1,6 @@
 
 import { pegaValorDaApi, pesquisaValorDaApi } from "./services/getData.js";
-import { renderizaCardProduto, renderizaCategoria, renderizarProdutosIniciais } from "./services/renderiza.js";
+import { renderizaCardProduto, renderizaCategoria, renderizarProdutosIniciais, renderizarCarrinho } from "./services/renderiza.js";
 import { avancarSlide, retornarSlide, trocarSlide } from "./carrossel.js";
 import { postMeusProdutos } from "./services/postItem.js";
 
@@ -10,6 +10,9 @@ const mostrador = document.querySelector('.mostrador');
 const setaavancar = document.querySelector('.setaavancar');
 const setavoltar = document.querySelector('.setavoltar');
 
+const btDoCarrinho = document.querySelector('.btCarrinho');
+const botaoAdicionarCArrinho = document.querySelectorAll('.botaoAdicionarCArrinho');
+
 // botoes categoria
 
 const botcatg = document.querySelectorAll('.botcatg');
@@ -18,8 +21,6 @@ const botcatg = document.querySelectorAll('.botcatg');
 
 const campoOfertas = document.querySelector('.ofertas');
 const campoProdutos = document.querySelector('.produtos');
-
-
 
 setaavancar.addEventListener('click', avancarSlide);
 
@@ -54,6 +55,15 @@ entradasTodosProdutos.forEach(async (entrada) => await renderizarProdutosIniciai
 botcatg.forEach((botao) => {
 
   botao.addEventListener('click', async () => await renderizaCategoria(campoOfertas, campoProdutos, botao))
+
+})
+
+btDoCarrinho.addEventListener('click', renderizarCarrinho)
+
+
+botaoAdicionarCArrinho.forEach((botao, index) => {
+
+  botao.addEventListener('click', () => adicionarItemAoCarrinho(index))
 
 })
 
