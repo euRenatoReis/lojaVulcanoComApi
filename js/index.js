@@ -1,6 +1,6 @@
 
 import { pegaValorDaApi, pesquisaValorDaApi } from "./services/getData.js";
-import { renderizaCardProduto, renderizaCategoria, renderizarProdutosIniciais, renderizarCarrinho } from "./services/renderiza.js";
+import { renderizaCardProduto, renderizaCategoria, renderizarProdutosIniciais, renderizarCarrinho, adicionarItemAoCarrinho } from "./services/renderiza.js";
 import { avancarSlide, retornarSlide, trocarSlide } from "./carrossel.js";
 import { postMeusProdutos } from "./services/postItem.js";
 
@@ -11,7 +11,6 @@ const setaavancar = document.querySelector('.setaavancar');
 const setavoltar = document.querySelector('.setavoltar');
 
 const btDoCarrinho = document.querySelector('.btCarrinho');
-const botaoAdicionarCArrinho = document.querySelectorAll('.botaoAdicionarCArrinho');
 
 // botoes categoria
 
@@ -36,13 +35,21 @@ barradebusca.addEventListener('keyup', async (e) => {
 
   if (chave && pegarValorEvento) {
 
-    mostrador.innerHTML = ``
+    mostrador.innerHTML = `
+    <button class="bt-fechar">
+        <i class="fa-solid fa-xmark fa-2xl" style="color: rgb(243, 125, 125);"></i>
+      </button>`
     let conteudoPesquisa = barradebusca.value
     conteudoPesquisa = conteudoPesquisa.charAt(0).toUpperCase() + conteudoPesquisa.slice(1)
     let valorDaPesquisa = await pesquisaValorDaApi(conteudoPesquisa);
     let EntradasObj = Object.entries(valorDaPesquisa)
 
     EntradasObj.forEach((itemPesquisado) => renderizaCardProduto(itemPesquisado, conteudoPesquisa, mostrador))
+
+    FecharMenuPesquisa.addEventListener('click', () => {
+
+      mostrador.classList.remove('open')
+    })
   }
 
 })
@@ -61,11 +68,16 @@ botcatg.forEach((botao) => {
 btDoCarrinho.addEventListener('click', renderizarCarrinho)
 
 
+const botaoAdicionarCArrinho = document.querySelectorAll('.botaoAdicionarCArrinho');
+
 botaoAdicionarCArrinho.forEach((botao, index) => {
 
   botao.addEventListener('click', () => adicionarItemAoCarrinho(index))
 
 })
+
+const FecharMenuPesquisa = document.querySelector('.bt-fechar');
+
 
 
 

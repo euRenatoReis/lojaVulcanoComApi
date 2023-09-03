@@ -16,9 +16,9 @@ async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) 
      </picture>
 
      <div class="descricao-produto">
-        <h3>${entradaReduzida}</h3>
+        <h3 class="nomeproduto">${entradaReduzida}</h3>
         <div class="preco-Ebotao">
-          <p class="preco-produto">$${entrada[1].price}</p>
+          <p class="preco-produto preco">$${entrada[1].price}</p>
           <button class="botaoAdicionarCArrinho">
           <i class="fa-solid fa-cart-plus fa-lg"></i>
           </button>
@@ -36,9 +36,9 @@ async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) 
       <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entradaReduzida}">
     </picture>
     <div class="descricao-oferta">
-         <h3>${entradaReduzida}</h3>
+         <h3 class="nomeproduto">${entradaReduzida}</h3>
       <div class="preco-Ebotao">
-         <p class="preco-oferta">$${entrada[1].price}</p>
+         <p class="preco-oferta preco">$${entrada[1].price}</p>
          <button class="botaoAdicionarCArrinho">
          <i class="fa-solid fa-cart-plus fa-lg"></i>
          </button>
@@ -84,9 +84,9 @@ async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
          </picture>
     
          <div class="descricao-oferta">
-            <h3>${entradaReduzida}</h3>
+            <h3 class="nomeproduto">${entradaReduzida}</h3>
             <div class="preco-Ebotao">
-               <p class="preco-oferta">$${objProduto[1].price}</p>
+               <p class="preco-oferta preco">$${objProduto[1].price}</p>
                <button class="botaoAdicionarCArrinho">
                <i class="fa-solid fa-cart-plus fa-lg"></i>
                </button>
@@ -106,9 +106,9 @@ async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
           </picture>
      
           <div class="descricao-produto">
-             <h3>${entradaReduzida}</h3>
+             <h3 class="nomeproduto">${entradaReduzida}</h3>
              <div class="preco-Ebotao">
-                <p class="preco-produto">$${objProduto[1].price}</p>
+                <p class="preco-produto preco">$${objProduto[1].price}</p>
                 <button class="botaoAdicionarCArrinho">
                    <i class="fa-solid fa-cart-plus fa-lg"></i>
                 </button>
@@ -135,7 +135,7 @@ async function renderizaCardProduto(itemPesquisado, conteudoPesquisa, mostrador)
     mostrador.innerHTML += ` 
         <div class="card-produto">
           <picture>
-            <source srcset=${itemPesquisado[1].image} media="(min-width: 100%)>
+            <source srcset=${itemPesquisado[1].image} media="(min-width: 200px)">
             <img class="fotodoproduto" src=${itemPesquisado[1].image} alt="imagem do produto ${itemPesquisado[1].title}">
           </picture>
           
@@ -143,9 +143,19 @@ async function renderizaCardProduto(itemPesquisado, conteudoPesquisa, mostrador)
             <h3 class="nomeproduto">${itemPesquisado[1].title}</h3>
             <div class="preco-Ebotao">
                <p class="preco">${itemPesquisado[1].price}</p>
-               <button class="botaoAdicionarCArrinho">
-               <i class="fa-solid fa-cart-plus fa-lg"></i>
-               </button>
+               <p class="categoria">${itemPesquisado[1].category}</p>
+            </div>
+            <div class="descricao">
+               <p>${itemPesquisado[1].description}</p>
+            </div>
+            <div class="rating-addcarrinho">
+              <div class="rating">
+                <h3 class="rating-rate">${itemPesquisado[1].rating.rate}<h3>
+                <p class="rating-count">${itemPesquisado[1].rating.count}</p>
+              </div>
+              <button class="botaoAdicionarCArrinho">
+              <i class="fa-solid fa-cart-plus fa-lg"></i>
+              </button>
             </div>
         </div>
       </div>
@@ -171,29 +181,93 @@ function renderizarCarrinho() {
 
 function adicionarItemAoCarrinho(index) {
 
-  const ProdutosDaPagina = document.querySelectorAll('.item');
-  const conteudoCarrinhoArea = document.querySelector('.conteudo-carrinho');
+  let conteudoCarrinhoArea = document.querySelector('.carrinho-menu .conteudo-carrinho');
+  const imagemProduto = document.querySelectorAll('.item picture');
+  const nomeProduto = document.querySelectorAll('.item .nomeproduto');
+  const precoProduto = document.querySelectorAll('.item .preco');
+  document.querySelector('.carrinho-menu .aviso-conteudo-vazio').remove()
 
-  const imagemProduto = ProdutosDaPagina[index].getElementsByClassName('.picture')
-
-  conteudoCarrinhoArea.innerHTML = ``
+  const imagemDaPicture = imagemProduto[index].querySelector('img');
+  const img = imagemDaPicture.src
 
   conteudoCarrinhoArea.innerHTML += `
        <div class="bloco-menu">
-         <img src=${imagemProduto}>
+         <img src=${img} class="portraiter-pedido" alt="imagem do produto: ${nomeProduto[index].textContent}">
          <div class="nome-preco">
-
+           <h3> ${nomeProduto[index].textContent} </h3>
+           <p class="preco-produto-escolhido"> ${precoProduto[index].textContent} </p>
          </div>
-         <div>
+         <div class="seletor-quantidade">
            <input class="aumentar-quantidade" type="button" value="+">
-             <p class="quantidade-produto">0</p>
-           <input class="aumentar-quantidade" type="button" value="-">
+             <p class="quantidade-produto">1</p>
+           <input class="diminuir-quantidade" type="button" value="-">
          </div>
+         <button class="remover-item">
+         <i class="fa-solid fa-trash fa-lg"></i>
+         </button>
        </div>
     `
 
+  const btAumentarQuantidade = document.querySelectorAll('.aumentar-quantidade');
+  const btDiminuirQuantidade = document.querySelectorAll('.diminuir-quantidade');
+  const quantidadeDeprodutos = document.querySelectorAll('.quantidade-produto');
+  const precoProdutoEscolhido = document.querySelectorAll('.preco-produto-escolhido');
+  var quantidadeDeitens = 1;
+  var valorSemSinal = precoProduto[index].textContent.replace('$', '');
+  var valor = parseFloat(valorSemSinal)
+  var precoXquantidade = valor * quantidadeDeitens
+
+  console.log('precoXquantidade: ', valor, 'valor que está no html: ', precoXquantidade)
+
+  btAumentarQuantidade.forEach((botao, index) => {
+
+    botao.addEventListener('click', () => {
+
+      quantidadeDeitens++;
+
+      precoXquantidade = valor * quantidadeDeitens
+
+      quantidadeDeprodutos[index].innerHTML = `${quantidadeDeitens}`
+      precoProdutoEscolhido[index].innerHTML = `${precoXquantidade}`
+
+    })
+
+  })
+
+  btDiminuirQuantidade.forEach((botao, index) => {
+
+    botao.addEventListener('click', () => {
+
+      quantidadeDeitens--
+
+      precoXquantidade = valor * quantidadeDeitens
+
+      quantidadeDeprodutos[index].innerHTML = `${quantidadeDeitens}`
+      precoProdutoEscolhido[index].innerHTML = `${precoXquantidade}`
+    })
+  })
+
+
+  const removerItem = document.querySelectorAll('.remover-item');
+  const blocosCompra = document.querySelectorAll('.bloco-menu');
+
+  removerItem.forEach((btRemover, index) => {
+
+    btRemover.addEventListener('click', () => {
+      blocosCompra[index].remove();
+      if (conteudoCarrinhoArea.childElementCount === 0) {
+
+        conteudoCarrinhoArea = `<p class="aviso-conteudo-vazio">seu carrinho está vazio</p>`
+        console.log('O elemento pai não possui filhos.');
+
+      } else {
+        console.log('O elemento pai possui filhos.');
+      }
+
+    })
+  })
 
 }
 
 
-export { renderizarProdutosIniciais, renderizaCategoria, renderizaCardProduto, renderizarCarrinho }
+export { renderizarProdutosIniciais, renderizaCategoria, renderizaCardProduto, renderizarCarrinho, adicionarItemAoCarrinho }

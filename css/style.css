@@ -1,11 +1,13 @@
 :root {
 
+    --precoColor: rgb(141, 68, 8);
     --destaquesDaPage: rgb(150, 18, 40);
     --corDaOferta: rgb(255, 219, 61);
     --corDaProduto: rgb(255, 219, 61);
-    --corSecundariasOfertaProduto : rgb(255, 164, 61);
+    --corSecundariasOfertaProduto: rgb(255, 164, 61);
     --corDoTituloProduto: rgb(255, 255, 255);
     --letrasDoCarrinho: rgb(180, 180, 180);
+    --divDestaqueCinza: rgb(233, 233, 233);
 
     --cursorPage: pointer;
     --cursorObjects: grab;
@@ -26,13 +28,13 @@
 }
 
 @keyframes cintilar {
-    
-    from{
+
+    from {
 
         color: var(--corDaOferta);
     }
 
-    to{
+    to {
 
         color: green;
     }
@@ -89,7 +91,7 @@ header .barradebusca {
     padding-left: 10px;
 }
 
-header .btCarrinho{
+header .btCarrinho {
 
     height: 35px;
     width: 35px;
@@ -124,12 +126,16 @@ header .config {
 
 }
 
-.config i, .usuario i, .btCarrinho i{
+.config i,
+.usuario i,
+.btCarrinho i {
 
-     color: var(--corDaOferta);
+    color: var(--corDaOferta);
 }
 
-.config i:hover, .usuario i:hover, .btCarrinho i:hover{
+.config i:hover,
+.usuario i:hover,
+.btCarrinho i:hover {
 
     color: var(--corSecundariasOfertaProduto);
 }
@@ -257,7 +263,7 @@ header .config {
     background-color: rgb(228, 79, 34);
     padding: 10px;
     color: var(--corDaOferta);
-   
+
 }
 
 .produtos {
@@ -391,11 +397,13 @@ footer .linkedin {
 
     position: absolute;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
     width: 100%;
     height: 100%;
     justify-content: center;
+    padding: 50px;
     font-family: var(--fontFamilyUniversalSegunda);
     background-color: rgb(145, 145, 145, 0.5);
 }
@@ -415,8 +423,10 @@ footer .linkedin {
 
 .mostrador.open .fotodoproduto {
 
+    
+    display: flex;
     background-color: rgb(145, 145, 145);
-    height: 50%;
+    height: 300px;
     width: 100%;
     justify-content: center;
     padding: 10px;
@@ -425,7 +435,6 @@ footer .linkedin {
 
 }
 
-
 .mostrador.open .informacoes {
 
     background-color: rgb(255, 255, 255);
@@ -433,7 +442,8 @@ footer .linkedin {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
+    gap: 10px;
     height: 50%;
     width: 100%;
     border-top-right-radius: 10px;
@@ -441,13 +451,86 @@ footer .linkedin {
 
 }
 
+.mostrador.open .categoria{
+    display: flex;
+    color: var(--destaquesDaPage);
+    background-color: var(--divDestaqueCinza);
+    height: 20px;
+    border-radius: 3px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mostrador.open .descricao{
+    
+    background-color: var(--letrasDoCarrinho);
+    padding: 10px;
+}
+
+.mostrador.open .preco{
+
+    font-weight: bold;
+    color: var(--precoColor);
+}
+
+.mostrador.open .rating-addcarrinho{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mostrador.open .rating{
+
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-left: 8px;
+}
+
+.mostrador.open .rating .rating-rate{
+
+    display: flex;
+    color: var(--corSecundariasOfertaProduto);
+    background-color: var(--divDestaqueCinza);
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.mostrador.open .rating .rating-count{
+
+    display: flex;
+    color: var(--destaquesDaPage);
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
 .mostrador.open .bt-fechar {
     display: flex;
     width: 50px;
     height: 50px;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(370px, -300px);
+    cursor: var(--cursorObjects);
+    background: none;
 }
 
-.card-resto-nome{
+.mostrador.open .bt-fechar i:hover{
+
+      color: rgb(192, 83, 39);
+}
+
+.card-resto-nome {
 
     position: absolute;
     width: 100%;
@@ -458,7 +541,7 @@ footer .linkedin {
     background-color: var(--destaquesDaPage);
 }
 
-.preco-Ebotao{
+.preco-Ebotao {
 
     display: flex;
     flex-direction: row;
@@ -466,7 +549,7 @@ footer .linkedin {
     align-items: center;
 }
 
-.botaoAdicionarCArrinho{
+.botaoAdicionarCArrinho {
 
     height: 20px;
     width: 60px;
@@ -475,17 +558,17 @@ footer .linkedin {
     cursor: var(--cursorObjects);
 }
 
-.botaoAdicionarCArrinho:hover{
+.botaoAdicionarCArrinho:hover {
 
     color: var(--destaquesDaPage);
 }
 
-.carrinho-menu{
+.carrinho-menu {
 
     display: none;
 }
 
-.carrinho-menu.open{
+.carrinho-menu.open {
 
     display: flex;
     flex-direction: column;
@@ -501,14 +584,14 @@ footer .linkedin {
     font-family: var(--fontFamilyUniversalSegunda);
 }
 
-.carrinho-menu.open h3{
+.carrinho-menu.open h3 {
 
     display: flex;
     justify-content: left;
     color: black;
 }
 
-.carrinho-menu.open .conteudo-carrinho{
+.carrinho-menu.open .conteudo-carrinho {
 
     display: flex;
     border-top: solid 1px black;
@@ -517,3 +600,83 @@ footer .linkedin {
     min-height: 120px;
 }
 
+.bloco-menu {
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-family: var(--fontFamilyUniversalSegunda);
+}
+
+.bloco-menu .nome-preco {
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: var(--fontFamilyUniversalSegunda);
+    height: 100%;
+}
+
+.seletor-quantidade {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+}
+
+.aumentar-quantidade {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: var(--cursorObjects);
+}
+
+.quantidade-produto{
+
+    display: flex;
+    align-self: center;
+}
+
+.diminuir-quantidade {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: var(--cursorObjects);
+}
+
+.portraiter-pedido{
+
+    display: flex;
+    width: 90px;
+    height: 90px;
+}
+
+.remover-item{
+
+    display: flex;
+    height: 70px;
+    width: 30px;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    cursor: var(--cursorObjects);
+}
+
+.remover-item:hover{
+
+    background-color: rgb(255, 187, 187);
+}
+
+.remover-item i{
+
+    color: rgb(233, 76, 76);
+}
