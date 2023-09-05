@@ -12,7 +12,7 @@ async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) 
 
     campoProdutos.innerHTML += `<div class="produto item">
      <picture>
-       <source  srcset=${entrada[1].image} media="(min-width: 250px)" />
+       <source  srcset=${entrada[1].image} media="(max-width: 200px)" />
        <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entradaReduzida}">
      </picture>
 
@@ -33,7 +33,7 @@ async function renderizarProdutosIniciais(entrada, campoOfertas, campoProdutos) 
 
     campoOfertas.innerHTML += `<div class="oferta item">
     <picture>
-      <source  srcset=${entrada[1].image} media="(min-width: 250px)" />
+      <source  srcset=${entrada[1].image} media="(max-width: 200px)" />
       <img class="imagem-do-produto" src=${entrada[1].image}  alt="imagem do produto ${entradaReduzida}">
     </picture>
     <div class="descricao-oferta">
@@ -80,7 +80,7 @@ async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
         campoOfertas.innerHTML += `<div class="oferta item">
     
          <picture>
-            <source  srcset=${objProduto[1].image} media="(min-width: 250px)" />
+            <source  srcset=${objProduto[1].image} media="(max-width: 200px)" />
             <img class="imagem-do-produto" src=${objProduto[1].image}  alt="imagem do produto ${objProduto[1].title}">
          </picture>
     
@@ -102,7 +102,7 @@ async function renderizaCategoria(campoOfertas, campoProdutos, botao) {
         campoProdutos.innerHTML += `<div class="produto item">
     
           <picture>
-            <source  srcset=${objProduto[1].image} media="(min-width: 250px)" />
+            <source  srcset=${objProduto[1].image} media="(max-width: 200px)" />
             <img class="imagem-do-produto" src=${objProduto[1].image}  alt="imagem do produto ${objProduto[1].title}">
           </picture>
      
@@ -136,7 +136,7 @@ async function renderizaCardProduto(itemPesquisado, conteudoPesquisa, mostrador)
     mostrador.innerHTML += ` 
         <div class="card-produto">
           <picture>
-            <source srcset=${itemPesquisado[1].image} media="(min-width: 200px)">
+            <source srcset=${itemPesquisado[1].image} media="(max-width: 200px)">
             <img class="fotodoproduto" src=${itemPesquisado[1].image} alt="imagem do produto ${itemPesquisado[1].title}">
           </picture>
           
@@ -294,4 +294,54 @@ function adicionarItemAoCarrinho(index) {
 }
 
 
-export { renderizarProdutosIniciais, renderizaCategoria, renderizaCardProduto, renderizarCarrinho, adicionarItemAoCarrinho }
+function renderizaProdutoPage(main, index, entradasTodosProdutos) {
+
+  main.innerHTML += `
+        
+          <div class="page-produto">
+           <button class="bt-fechar-page">
+              <i class="fa-solid fa-xmark fa-2xl" style="color: rgb(226, 208, 47);"></i>
+           </button>
+           <div class="div-produto">
+             <picture>
+                <source srcset=${entradasTodosProdutos[index][1].image} media(max-width:20%;)>
+                <img  src=${entradasTodosProdutos[index][1].image} alt="imagem do produto ">
+             </picture>
+          
+             <div class="conteudo-page-information">
+                 <div class="nome-categoria">
+                    <h1>${entradasTodosProdutos[index][1].title}</h1>
+                    <p>${entradasTodosProdutos[index][1].category}</p>
+                 </div>
+                 <p class="preco">$${entradasTodosProdutos[index][1].price}</p>
+                 <div class="descricao">
+                    <p>${entradasTodosProdutos[index][1].description}</p>   
+                 </div>
+                 <div class="rating">
+                    <p class="rate">${entradasTodosProdutos[index][1].rating.rate}</p>
+                    <p class="count">${entradasTodosProdutos[index][1].rating.count}</p> 
+                 </div>
+                 <div class="sessao-comentarios">
+                     <div class="balao-comentario">
+                         <input class="balao-comentar">
+                         <input class="botao-enviar-coment" type="button" value="ENVIAR">
+                     </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+     `
+
+  const botaoFechar = document.querySelector('.bt-fechar-page');
+
+  botaoFechar.addEventListener('click', () => {
+
+     const pageProduto = document.querySelector('.page-produto')
+
+     pageProduto.parentNode.removeChild(pageProduto)
+  })
+
+}
+
+
+export { renderizaProdutoPage, renderizarProdutosIniciais, renderizaCategoria, renderizaCardProduto, renderizarCarrinho, adicionarItemAoCarrinho }

@@ -1,6 +1,6 @@
 
 import { pegaValorDaApi, pesquisaValorDaApi } from "./services/getData.js";
-import { renderizaCardProduto, renderizaCategoria, renderizarProdutosIniciais, renderizarCarrinho, adicionarItemAoCarrinho } from "./services/renderiza.js";
+import { renderizaProdutoPage, renderizaCardProduto, renderizaCategoria, renderizarProdutosIniciais, renderizarCarrinho, adicionarItemAoCarrinho } from "./services/renderiza.js";
 import { avancarSlide, retornarSlide, trocarSlide } from "./carrossel.js";
 import { postMeusProdutos } from "./services/postItem.js";
 
@@ -20,6 +20,7 @@ const botcatg = document.querySelectorAll('.botcatg');
 
 const campoOfertas = document.querySelector('.ofertas');
 const campoProdutos = document.querySelector('.produtos');
+const main = document.querySelector('main');
 
 setaavancar.addEventListener('click', avancarSlide);
 
@@ -38,7 +39,7 @@ barradebusca.addEventListener('keyup', async (e) => {
     mostrador.innerHTML = `
     <button class="bt-fechar">
         <i class="fa-solid fa-xmark fa-2xl" style="color: rgb(243, 125, 125);"></i>
-      </button>`
+    </button>`
     let conteudoPesquisa = barradebusca.value
     conteudoPesquisa = conteudoPesquisa.charAt(0).toUpperCase() + conteudoPesquisa.slice(1)
     let valorDaPesquisa = await pesquisaValorDaApi(conteudoPesquisa);
@@ -79,6 +80,13 @@ botaoAdicionarCArrinho.forEach((botao, index) => {
 const FecharMenuPesquisa = document.querySelector('.bt-fechar');
 
 
+const itemsDaPage = document.querySelectorAll('.nomeproduto');
 
+itemsDaPage.forEach((item, index) => {
 
-// fazer titulos grandes serem meio ocultos e no hover continua-los
+  item.addEventListener('click', () => {
+
+    renderizaProdutoPage(main, index, entradasTodosProdutos)
+
+  })
+})
