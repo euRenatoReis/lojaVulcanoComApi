@@ -1,5 +1,6 @@
 
 import { pegaValorDaApi } from "./getData.js"
+import { SomarTotal, SubtrairTotal } from "./ContabilizarTotal.js"
 
 
 
@@ -185,14 +186,22 @@ function adicionarItemAoCarrinho(index) {
   const imagemProduto = document.querySelectorAll('.item picture');
   const nomeProduto = document.querySelectorAll('.item .nomeproduto');
   const precoProduto = document.querySelectorAll('.item .preco');
-  document.querySelector('.carrinho-menu .aviso-conteudo-vazio').remove()
+
+  if (conteudoCarrinhoArea.childElementCount >= 1) {
+    const avisoDoConteudo = document.querySelector('.carrinho-menu .aviso-conteudo-vazio')
+    avisoDoConteudo.classList.add('close');
+  }
+
 
   const imagemDaPicture = imagemProduto[index].querySelector('img');
   const img = imagemDaPicture.src
 
   conteudoCarrinhoArea.innerHTML += `
        <div class="bloco-menu">
-         <img src=${img} class="portraiter-pedido" alt="imagem do produto: ${nomeProduto[index].textContent}">
+         <picture>
+            <source srcset=${img} media="(min-width: 100px)">
+            <img src=${img} class="portraiter-pedido" alt="imagem do produto: ${nomeProduto[index].textContent}">
+         </picture>
          <div class="nome-preco">
            <h3> ${nomeProduto[index].textContent} </h3>
            <p class="preco-produto-escolhido"> ${precoProduto[index].textContent} </p>
@@ -230,6 +239,7 @@ function adicionarItemAoCarrinho(index) {
       quantidadeDeprodutos[index].innerHTML = `${quantidadeDeitens}`
       precoProdutoEscolhido[index].innerHTML = `${precoXquantidade}`
 
+      SomarTotal(precoProdutoEscolhido)
     })
 
   })
@@ -238,12 +248,21 @@ function adicionarItemAoCarrinho(index) {
 
     botao.addEventListener('click', () => {
 
-      quantidadeDeitens--
+      if (quantidadeDeitens < 1) {
 
-      precoXquantidade = valor * quantidadeDeitens
+        return quantidadeDeitens = 1
 
-      quantidadeDeprodutos[index].innerHTML = `${quantidadeDeitens}`
-      precoProdutoEscolhido[index].innerHTML = `${precoXquantidade}`
+      } else {
+        quantidadeDeitens--
+
+        precoXquantidade = valor * quantidadeDeitens
+
+        quantidadeDeprodutos[index].innerHTML = `${quantidadeDeitens}`
+        precoProdutoEscolhido[index].innerHTML = `${precoXquantidade}`
+
+        SomarTotal(precoProdutoEscolhido)
+
+      }
     })
   })
 
@@ -258,14 +277,19 @@ function adicionarItemAoCarrinho(index) {
       if (conteudoCarrinhoArea.childElementCount === 0) {
 
         conteudoCarrinhoArea = `<p class="aviso-conteudo-vazio">seu carrinho está vazio</p>`
+
         console.log('O elemento pai não possui filhos.');
 
       } else {
         console.log('O elemento pai possui filhos.');
+
+        SubtrairTotal(precoProdutoEscolhido, index, conteudoCarrinhoArea)
       }
 
     })
   })
+
+  SomarTotal(precoProdutoEscolhido)
 
 }
 

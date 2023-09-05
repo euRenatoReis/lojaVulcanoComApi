@@ -594,10 +594,13 @@ footer .linkedin {
 .carrinho-menu.open .conteudo-carrinho {
 
     display: flex;
+    flex-direction: column;
+    flex-basis: auto;
     border-top: solid 1px black;
     justify-content: center;
     align-items: center;
     min-height: 120px;
+    gap: 15px;
 }
 
 .bloco-menu {
@@ -605,6 +608,10 @@ footer .linkedin {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    border-top: solid 1px var(--letrasDoCarrinho);
+    border-bottom: solid 1px var(--letrasDoCarrinho);
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-family: var(--fontFamilyUniversalSegunda);
 }
 
@@ -679,4 +686,22 @@ footer .linkedin {
 .remover-item i{
 
     color: rgb(233, 76, 76);
+}
+
+.aviso-conteudo-vazio.close{
+
+    display: none;
+}
+
+.div-total-compra{
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.Total-todas-compras{
+
+    color: var(--destaquesDaPage);
+    font-weight: bold;
 }
